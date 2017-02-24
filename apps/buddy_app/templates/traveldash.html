@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Travel Dashboard</title>
+  </head>
+  <body>
+      <a class="top" href="/logout">Logout</a>
+    <h1>Hello, {{request.session.logged.name}}!</h1>
+
+    <h4>Your Trip Schedules</h4>
+    <table>
+      <tr>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>Travel End Date</th>
+        <th>Plan</th>
+      </tr>
+      {% for trip in triplist %}
+        <tr>
+          <td><a href="travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+          <td>{{trip.startdate|date:'N j o'}}</td>
+          <td>{{trip.enddate|date:'N j o'}}</td>
+          <td>{{trip.plan}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <h4>Other User's Travel Plans</h4>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>Travel End Date</th>
+        <th>Do You Want to Join?</th>
+      </tr>
+      {% for trip in alltriplist %}
+        <tr>
+          <td>{{trip.tripplanner.name}}</td>
+          <td><a href="travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+          <td>{{trip.startdate|date:'N j o'}}</td>
+          <td>{{trip.enddate|date:'N j o'}}</td>
+          <td><a href="/join/{{trip.id}}">Join</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <p><a class="top" href="/travels/add">Add Travel Plan</a></p>
+  </body>
+</html>

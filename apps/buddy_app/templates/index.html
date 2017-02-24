@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Login/Registration</title>
+  </head>
+  <body>
+    <h2>Welcome!</h2>
+    {% if messages %}
+      {% for message in messages %}
+        <p class = {{message.tags}}>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+    <div class="box">
+      <h4>Registration</h4>
+
+      <form action="/validateit" method="post">
+        {% csrf_token %}
+        <p><input type="text" name="name" placeholder="Name"></p>
+        <p><input type="text" name="username" placeholder="Username"></p>
+        <p><input type="text" name="password" placeholder="Password"></p>
+        <p>*Password should be at least 8 characters</p>
+        <p><input type="text" name="confpass" placeholder="Confirm Password"></p>
+        <p><input type="submit" value="Register"></p>
+      </form>
+    </div>
+
+    <div class="box">
+      <h4>Login</h4>
+      <form action="login" method="post">
+        {% csrf_token %}
+        <p><input type="text" name="username" placeholder="Username"></p>
+        <p><input type="text" name="password" placeholder="Password"></p>
+        <p><input type="submit" value="Login"></p>
+      </form>
+  </div>
+
+  </body>
+</html>

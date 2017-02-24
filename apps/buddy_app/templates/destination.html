@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Destination</title>
+  </head>
+  <body>
+    <div class="top">
+      <a class="header" href="/travels">Home</a>
+      <a class="header" href="/logout">Logout</a>
+    </div>
+    <h2>{{currenttrip.destination}}</h2>
+    <p>Planned By: {{currenttrip.tripplanner.name}}</p>
+    <p>Description: {{currenttrip.plan}}</p>
+    <p>Travel Date From: {{currenttrip.startdate|date:'N j o'}}</p>
+    <p>Travel Date To: {{currenttrip.enddate|date:'N j o'}}</p>
+    <h2>Other users joining the trip:</h2>
+    {% for user in joiningtrip %}
+      <p>{{user.name}}</p>
+    {% endfor %}
+  </body>
+</html>

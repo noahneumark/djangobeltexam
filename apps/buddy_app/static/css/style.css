@@ -1,0 +1,52 @@
+body {
+  background: rgb(255, 241, 199);
+  padding: 20px;
+}
+
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}
+
+.box {
+  display: inline-block;
+  border: 2px solid black;
+  padding: 40px;
+  vertical-align: top;
+  width: 200px;
+  margin: 15px;
+}
+
+.header {
+  color: blue;
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.top {
+  width: 300px;
+  margin-left: auto;
+  display: block;
+}
+
+table {
+   font-family: arial, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+}
+
+td, th {
+   border: 1px solid black;
+   text-align: left;
+   padding: 8px;
+}
+
+th {
+   background: rgb(245, 175, 118);
+}
+
+tr:nth-child(even) {
+   background-color: rgb(255, 198, 153) ;
+}
